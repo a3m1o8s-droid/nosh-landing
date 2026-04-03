@@ -3,25 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --brand-orange: #FF6B35;
+  --brand-green: #2D5016;
+  --brand-cream: #FFF8F0;
+  --brand-dark: #1A1A1A;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--brand-dark);
+  background: var(--brand-cream);
+  font-family: "Heebo", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Scroll animation utility */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Swipe card styles */
+.swipe-card {
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+
+.swipe-card:active {
+  cursor: grabbing;
 }
