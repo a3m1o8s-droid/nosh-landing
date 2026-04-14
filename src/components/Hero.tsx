@@ -41,17 +41,15 @@ export function Hero() {
           <div className="text-center md:text-start md:order-1">
             <div className="inline-block mb-5 px-4 py-1.5 rounded-full border border-gold/20 bg-gold/5">
               <span className="text-gold-light text-sm font-medium">
-                {t("כשר. אישי. בלי לחשוב.", "Kosher. Personal. Effortless.")}
+                {t("כשר. מותאם אישית. בלי לחשוב.", "Kosher. Personalized. Zero Effort.")}
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-5 leading-tight">
-              <span className="text-white">Nosh</span>
-              <br />
               <span className="text-gold-gradient">
                 {t(
-                  "ה-AI שמחליט בשבילך מה לאכול",
-                  "The AI That Decides What You Eat"
+                  "Nosh בוחר לך מה לאכול היום",
+                  "Nosh Picks Your Meal Today"
                 )}
               </span>
             </h1>
