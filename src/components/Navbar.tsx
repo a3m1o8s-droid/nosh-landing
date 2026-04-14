@@ -3,7 +3,7 @@
 import { useLang } from "@/context/LanguageContext";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { NoshLogo } from "./NoshLogo";
 
 const links = [
   { he: "איך זה עובד", en: "How It Works", href: "#how-it-works" },
@@ -39,15 +39,8 @@ export function Navbar() {
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-5 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
-          <Image
-            src="/logo.svg"
-            alt="Nosh"
-            width={120}
-            height={40}
-            className="h-9 md:h-10 w-auto"
-            priority
-          />
+        <a href="#">
+          <NoshLogo height={32} />
         </a>
 
         {/* Desktop links */}
@@ -62,7 +55,7 @@ export function Navbar() {
             </a>
           ))}
 
-          {/* Language toggle in navbar */}
+          {/* Language toggle */}
           <button
             onClick={toggleLang}
             className="border border-gold/50 px-3 py-1.5 rounded-full text-sm text-gold-light hover:bg-gold/10 transition-all duration-300"

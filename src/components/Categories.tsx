@@ -62,9 +62,10 @@ export function Categories() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((cat, i) => (
-            <div
+            <a
               key={i}
-              className="animate-on-scroll group relative rounded-2xl overflow-hidden border border-white/10 hover:border-gold/30 hover:scale-[1.03] transition-all duration-300 bg-dark-surface shadow-lg shadow-black/20"
+              href="#join"
+              className="animate-on-scroll group relative rounded-2xl overflow-hidden border border-white/10 hover:border-gold/30 hover:scale-[1.03] transition-all duration-300 bg-dark-surface shadow-lg shadow-black/20 block"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               {/* Tooltip */}
@@ -95,7 +96,7 @@ export function Categories() {
                 </h3>
                 <p className="text-gray-400 text-sm">{t(cat.descHe, cat.descEn)}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

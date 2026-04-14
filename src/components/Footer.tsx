@@ -1,7 +1,7 @@
 "use client";
 
 import { useLang } from "@/context/LanguageContext";
-import Image from "next/image";
+import { NoshLogo } from "./NoshLogo";
 
 export function Footer() {
   const { t } = useLang();
@@ -10,14 +10,8 @@ export function Footer() {
     <footer className="py-10 px-4 sm:px-5 border-t border-white/5">
       <div className="max-w-6xl mx-auto text-center">
         {/* Logo */}
-        <div className="mb-4">
-          <Image
-            src="/logo.svg"
-            alt="Nosh"
-            width={90}
-            height={30}
-            className="h-7 w-auto mx-auto"
-          />
+        <div className="mb-4 flex justify-center">
+          <NoshLogo height={28} />
         </div>
 
         <p className="text-gray-500 text-sm mb-2">
@@ -33,17 +27,22 @@ export function Footer() {
 
         {/* Links */}
         <div className="flex items-center justify-center gap-6 mb-6">
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-gold transition-colors text-sm"
-          >
-            {t("אינסטגרם", "Instagram")}
-          </a>
+          <span className="relative group">
+            <a
+              href="#"
+              onClick={(e) => e.preventDefault()}
+              className="text-gray-500 hover:text-gold transition-colors text-sm"
+            >
+              {t("אינסטגרם", "Instagram")}
+            </a>
+            {/* Tooltip */}
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded bg-gold text-dark-950 text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              {t("בקרוב", "Coming soon")}
+            </span>
+          </span>
           <span className="text-gray-700">|</span>
           <a
-            href="mailto:hello@nosh.co.il"
+            href="#join"
             className="text-gray-500 hover:text-gold transition-colors text-sm"
           >
             {t("צרו קשר", "Contact Us")}
