@@ -17,14 +17,14 @@ function SecondCTA() {
   const { t } = useLang();
 
   return (
-    <section id="join" className="py-20 md:py-28 px-4 relative">
-      <div className="section-divider max-w-2xl mx-auto mb-20" />
+    <section id="join" className="py-16 md:py-24 px-4 sm:px-5 relative">
+      <div className="section-divider max-w-2xl mx-auto mb-14" />
 
       <div className="max-w-xl mx-auto text-center animate-on-scroll">
         <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
           {t("רוצה לקבל את ההמלצה הראשונה?", "Want to Get Your First Recommendation?")}
         </h2>
-        <p className="text-gray-400 mb-8">
+        <p className="text-gray-400 mb-7">
           {t(
             "השאר מייל ונעדכן אותך ברגע ש-Nosh מוכן",
             "Leave your email and we'll notify you when Nosh is ready"

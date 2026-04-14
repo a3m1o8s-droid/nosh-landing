@@ -1,44 +1,42 @@
 "use client";
 
 import { useLang } from "@/context/LanguageContext";
+import { Truck, Flame, Timer, MapPin } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 
-const categories = [
+const categories: { he: string; en: string; descHe: string; descEn: string; image: string; Icon: LucideIcon }[] = [
   {
     he: "הזמן בלחיצה",
     en: "Order in a Click",
     descHe: "משלוח ממסעדה כשרה קרובה",
     descEn: "Delivery from a nearby kosher restaurant",
-    image:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=640&q=80",
-    emoji: "\uD83D\uDEF5",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80",
+    Icon: Truck,
   },
   {
     he: "חמם ותאכל",
     en: "Heat & Eat",
     descHe: "מוצר מוכן מהסופר",
     descEn: "Ready-made from the supermarket",
-    image:
-      "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=640&q=80",
-    emoji: "\uD83D\uDD25",
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80",
+    Icon: Flame,
   },
   {
     he: "10 דקות, 4 מרכיבים",
     en: "10 Min, 4 Ingredients",
     descHe: "מתכון מינימליסטי שכל אחד יכול",
     descEn: "A minimalist recipe anyone can make",
-    image:
-      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=640&q=80",
-    emoji: "\u23F1\uFE0F",
+    image: "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400&q=80",
+    Icon: Timer,
   },
   {
     he: "לך תאכל בחוץ",
     en: "Go Eat Out",
     descHe: "מסעדה כשרה באזור שלך",
     descEn: "A kosher restaurant near you",
-    image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=640&q=80",
-    emoji: "\uD83C\uDF7D\uFE0F",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80",
+    Icon: MapPin,
   },
 ];
 
@@ -46,11 +44,11 @@ export function Categories() {
   const { t } = useLang();
 
   return (
-    <section id="categories" className="py-20 md:py-32 px-4 relative">
-      <div className="section-divider max-w-2xl mx-auto mb-20" />
+    <section id="categories" className="py-16 md:py-24 px-4 sm:px-5 relative">
+      <div className="section-divider max-w-2xl mx-auto mb-14" />
 
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
+        <div className="text-center mb-12 animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
             {t("4 סוגי המלצות", "4 Types of Recommendations")}
           </h2>
@@ -62,7 +60,7 @@ export function Categories() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((cat, i) => (
             <div
               key={i}
@@ -77,7 +75,7 @@ export function Categories() {
               </div>
 
               {/* Image */}
-              <div className="relative h-44 overflow-hidden">
+              <div className="relative h-40 overflow-hidden">
                 <Image
                   src={cat.image}
                   alt={t(cat.he, cat.en)}
@@ -85,13 +83,13 @@ export function Categories() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-surface to-transparent" />
-                <div className="absolute bottom-3 start-3 text-2xl">
-                  {cat.emoji}
+                <div className="absolute bottom-3 start-3">
+                  <cat.Icon size={28} color="#D4A853" strokeWidth={1.5} />
                 </div>
               </div>
 
               {/* Text */}
-              <div className="p-5">
+              <div className="p-4">
                 <h3 className="text-lg font-bold text-white mb-1">
                   {t(cat.he, cat.en)}
                 </h3>

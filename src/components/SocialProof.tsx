@@ -1,24 +1,26 @@
 "use client";
 
 import { useLang } from "@/context/LanguageContext";
+import { Clock, ListX, Globe } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const painPoints = [
+const painPoints: { Icon: LucideIcon; he: string; en: string; descHe: string; descEn: string }[] = [
   {
-    emoji: "\uD83E\uDD14",
+    Icon: Clock,
     he: "כל יום אותה שאלה: מה לאכול?",
     en: "Every day the same question: what to eat?",
     descHe: "Nosh מחליט בשבילך. המלצה אחת, מדויקת, כל יום.",
     descEn: "Nosh decides for you. One precise recommendation, every day.",
   },
   {
-    emoji: "\uD83D\uDE35\u200D\uD83D\uDCAB",
+    Icon: ListX,
     he: "50 אפשרויות בוולט ואתה עדיין לא יודע",
     en: "50 options on Wolt and you still can't decide",
     descHe: "Nosh לא נותן 50 אפשרויות. הוא נותן אחת.",
     descEn: "Nosh doesn't give 50 options. It gives you one.",
   },
   {
-    emoji: "\u2708\uFE0F",
+    Icon: Globe,
     he: "אוכל כשר בחו״ל? בהצלחה למצוא",
     en: "Kosher food abroad? Good luck finding it",
     descHe: "Nosh מאתר מסעדות כשרות בכל מקום בעולם.",
@@ -30,11 +32,11 @@ export function SocialProof() {
   const { t } = useLang();
 
   return (
-    <section id="pain-points" className="py-20 md:py-32 px-4 relative">
-      <div className="section-divider max-w-2xl mx-auto mb-20" />
+    <section id="pain-points" className="py-16 md:py-24 px-4 sm:px-5 relative">
+      <div className="section-divider max-w-2xl mx-auto mb-14" />
 
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
+        <div className="text-center mb-12 animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
             {t("הכאב ש-Nosh פותר", "The Pain Nosh Solves")}
           </h2>
@@ -47,10 +49,12 @@ export function SocialProof() {
           {painPoints.map((point, i) => (
             <div
               key={i}
-              className="animate-on-scroll glass-card rounded-2xl p-8 hover:border-gold/25 transition-all duration-300"
+              className="animate-on-scroll glass-card rounded-2xl p-7 hover:border-gold/25 transition-all duration-300"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="text-4xl mb-5">{point.emoji}</div>
+              <div className="mb-4">
+                <point.Icon size={32} color="#D4A853" strokeWidth={1.5} />
+              </div>
               <h3 className="text-lg font-bold text-white mb-3">
                 {t(point.he, point.en)}
               </h3>

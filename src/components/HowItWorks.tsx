@@ -1,24 +1,26 @@
 "use client";
 
 import { useLang } from "@/context/LanguageContext";
+import { Settings, BellRing, ArrowRightLeft } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const steps = [
+const steps: { Icon: LucideIcon; he: string; en: string; descHe: string; descEn: string }[] = [
   {
-    emoji: "\u2699\uFE0F",
+    Icon: Settings,
     he: "אמור ל-Nosh מה אתה (לא) אוכל",
     en: "Tell Nosh what you do (and don't) eat",
     descHe: "העדפות, אלרגיות, כשרות — הכל מותאם אישית",
     descEn: "Preferences, allergies, kosher level — fully personalized",
   },
   {
-    emoji: "\uD83D\uDD14",
+    Icon: BellRing,
     he: "כל יום ב-17:00 תקבל כרטיס אחד",
     en: "Every day at 5PM you get one card",
     descHe: "המלצה אחת בלבד. בלי עומס. בלי חרדת בחירה.",
     descEn: "Just one recommendation. No overload. No decision anxiety.",
   },
   {
-    emoji: "\uD83D\uDC49",
+    Icon: ArrowRightLeft,
     he: "Swipe ימינה = אוכלים. שמאלה = הבא.",
     en: "Swipe right = eat it. Left = next.",
     descHe: "אהבת? מקבלים הנחיות. לא אהבת? Nosh לומד ומשתפר.",
@@ -30,11 +32,11 @@ export function HowItWorks() {
   const { t } = useLang();
 
   return (
-    <section id="how-it-works" className="py-20 md:py-32 px-4 relative">
-      <div className="section-divider max-w-2xl mx-auto mb-20" />
+    <section id="how-it-works" className="py-16 md:py-24 px-4 sm:px-5 relative">
+      <div className="section-divider max-w-2xl mx-auto mb-14" />
 
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
+        <div className="text-center mb-12 animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
             {t("איך זה עובד?", "How It Works")}
           </h2>
@@ -43,21 +45,21 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="animate-on-scroll glass-card rounded-2xl p-8 text-center hover:border-gold/25 transition-all duration-300 group"
+              className="animate-on-scroll glass-card rounded-2xl p-7 text-center hover:border-gold/25 transition-all duration-300 group"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {/* Step number */}
-              <div className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold/20 text-gold text-sm font-bold mb-5">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold/20 text-gold text-sm font-bold mb-4">
                 {i + 1}
               </div>
 
-              {/* Emoji */}
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {step.emoji}
+              {/* Icon */}
+              <div className="flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <step.Icon size={32} color="#D4A853" strokeWidth={1.5} />
               </div>
 
               <h3 className="text-lg font-bold text-white mb-2">

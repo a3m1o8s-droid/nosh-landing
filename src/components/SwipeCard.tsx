@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "@/context/LanguageContext";
+import { X, Check, Clock } from "lucide-react";
 import Image from "next/image";
 
 export function SwipeCard() {
@@ -16,15 +17,16 @@ export function SwipeCard() {
         {/* Food image */}
         <div className="relative h-48 sm:h-56">
           <Image
-            src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=640&q=80"
-            alt={t("שווארמה", "Shawarma")}
+            src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80"
+            alt={t("אוכל ים תיכוני", "Mediterranean food")}
             fill
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-dark-surface via-transparent to-transparent" />
 
           {/* Badge */}
-          <div className="absolute top-3 start-3 px-3 py-1 rounded-full bg-gold/90 text-dark-950 text-xs font-bold">
+          <div className="absolute top-3 start-3 px-3 py-1 rounded-full bg-gold/90 text-dark-950 text-xs font-bold flex items-center gap-1">
+            <Clock size={12} />
             {t("המלצת היום", "Today's Pick")}
           </div>
         </div>
@@ -40,16 +42,16 @@ export function SwipeCard() {
 
           {/* Swipe indicators */}
           <div className="flex justify-between items-center pt-3 border-t border-white/5">
-            <div className="flex items-center gap-2 text-red-400/60 text-sm">
-              <span>&#10005;</span>
+            <div className="flex items-center gap-1.5 text-red-400/60 text-sm">
+              <X size={16} />
               <span>{t("הבא", "Skip")}</span>
             </div>
             <div className="text-xs text-gray-600">
               {t("החלק לבחור", "Swipe to choose")}
             </div>
-            <div className="flex items-center gap-2 text-emerald-400/60 text-sm">
+            <div className="flex items-center gap-1.5 text-emerald-400/60 text-sm">
               <span>{t("אוכלים!", "Let's eat!")}</span>
-              <span>&#10003;</span>
+              <Check size={16} />
             </div>
           </div>
         </div>

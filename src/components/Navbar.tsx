@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "@/context/LanguageContext";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -14,6 +15,7 @@ const links = [
 export function Navbar() {
   const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -24,12 +26,12 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-dark-950/90 backdrop-blur-md border-b border-white/5 py-3"
-          : "bg-transparent py-5"
+        scrolled || menuOpen
+          ? "bg-dark-950/95 backdrop-blur-md border-b border-white/5 py-3"
+          : "bg-transparent py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center">
           <Image
@@ -42,7 +44,7 @@ export function Navbar() {
           />
         </a>
 
-        {/* Links */}
+        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <a
@@ -55,14 +57,31 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Mobile CTA */}
-        <a
-          href="#join"
-          className="md:hidden text-sm text-gold font-medium"
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden text-gray-400 hover:text-gold transition-colors"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          {t("הצטרפו", "Join")}
-        </a>
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-dark-950/95 backdrop-blur-md border-t border-white/5 px-4 pb-4 pt-2">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="block py-3 text-base text-gray-300 hover:text-gold transition-colors border-b border-white/5 last:border-0"
+            >
+              {t(link.he, link.en)}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
