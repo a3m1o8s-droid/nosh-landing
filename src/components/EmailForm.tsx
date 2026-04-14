@@ -7,7 +7,7 @@ export function EmailForm() {
 
   return (
     <form
-      action="https://formspree.io/f/{FORM_ID}"
+      action="https://formspree.io/f/mzdkalqe"
       method="POST"
       className="flex flex-col sm:flex-row gap-3"
     >
