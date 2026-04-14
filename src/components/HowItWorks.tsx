@@ -30,7 +30,7 @@ export function HowItWorks() {
   const { t } = useLang();
 
   return (
-    <section className="py-20 md:py-32 px-4 relative">
+    <section id="how-it-works" className="py-20 md:py-32 px-4 relative">
       <div className="section-divider max-w-2xl mx-auto mb-20" />
 
       <div className="max-w-6xl mx-auto">

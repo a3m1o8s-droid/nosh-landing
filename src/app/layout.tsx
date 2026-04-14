@@ -38,12 +38,15 @@ export const metadata: Metadata = {
       "כל יום ב-17:00 מקבלים המלצה אחת. כשר. אישי. בלי לחשוב.",
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0A0A0A",
+  themeColor: "#141418",
 };
 
 export default function RootLayout({

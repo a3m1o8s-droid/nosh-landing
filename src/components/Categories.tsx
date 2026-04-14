@@ -46,7 +46,7 @@ export function Categories() {
   const { t } = useLang();
 
   return (
-    <section className="py-20 md:py-32 px-4 relative">
+    <section id="categories" className="py-20 md:py-32 px-4 relative">
       <div className="section-divider max-w-2xl mx-auto mb-20" />
 
       <div className="max-w-6xl mx-auto">
@@ -66,9 +66,16 @@ export function Categories() {
           {categories.map((cat, i) => (
             <div
               key={i}
-              className="animate-on-scroll group rounded-2xl overflow-hidden border border-white/5 hover:border-gold/20 transition-all duration-500 bg-dark-800"
+              className="animate-on-scroll group relative rounded-2xl overflow-hidden border border-white/5 hover:border-gold/20 transition-all duration-500 bg-dark-surface"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
+              {/* Tooltip */}
+              <div className="absolute top-3 end-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <span className="px-2.5 py-1 rounded-lg bg-gold text-dark-950 text-xs font-bold whitespace-nowrap">
+                  {t("בקרוב", "Coming soon")}
+                </span>
+              </div>
+
               {/* Image */}
               <div className="relative h-44 overflow-hidden">
                 <Image
@@ -77,7 +84,7 @@ export function Categories() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-800 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-surface to-transparent" />
                 <div className="absolute bottom-3 start-3 text-2xl">
                   {cat.emoji}
                 </div>

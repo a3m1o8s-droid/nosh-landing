@@ -5,8 +5,8 @@
 :root {
   --gold: #D4A843;
   --gold-light: #E8C36A;
-  --dark-bg: #0A0A0A;
-  --dark-card: #141414;
+  --dark-bg: #141418;
+  --dark-surface: #1E1E24;
 }
 
 html {
@@ -70,7 +70,7 @@ body {
 
 /* Glass card */
 .glass-card {
-  background: rgba(20, 20, 20, 0.7);
+  background: rgba(30, 30, 36, 0.8);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(212, 168, 67, 0.12);
 }
@@ -91,4 +91,16 @@ body {
 .section-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.2), transparent);
+}
+
+/* Hero radial glow */
+.hero-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(212, 168, 67, 0.04) 0%, transparent 70%);
+  pointer-events: none;
 }

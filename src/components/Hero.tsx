@@ -9,18 +9,21 @@ export function Hero() {
   const { t } = useLang();
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80"
           alt="Premium food spread"
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-15"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-950/80 via-dark-950/90 to-dark-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-950/70 via-dark-950/90 to-dark-950" />
       </div>
+
+      {/* Radial gold glow */}
+      <div className="hero-glow" />
 
       {/* Gold accent lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
@@ -57,9 +60,13 @@ export function Hero() {
               <EmailForm />
             </div>
 
-            <p className="mt-4 text-sm text-gray-500">
-              {t("כבר 0 אנשים מחכים", "Already 0 people waiting")}
-            </p>
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center gap-2 mt-6 text-gold-light hover:text-gold transition-colors text-sm font-medium group"
+            >
+              {t("ספרו לי עוד", "Tell Me More")}
+              <span className="inline-block transition-transform group-hover:translate-y-0.5">&darr;</span>
+            </a>
           </div>
 
           {/* Swipe card demo */}

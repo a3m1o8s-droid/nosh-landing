@@ -10,11 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         dark: {
-          950: "#0A0A0A",
-          900: "#111111",
-          800: "#1A1A1A",
-          700: "#242424",
-          600: "#2E2E2E",
+          950: "#141418",
+          900: "#181820",
+          800: "#1E1E24",
+          700: "#282830",
+          600: "#32323C",
+          surface: "#1E1E24",
         },
         gold: {
           DEFAULT: "#D4A843",
@@ -61,6 +62,10 @@ const config: Config = {
           "0%": { opacity: "0", transform: "scale(0.9)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
+        "city-glow": {
+          "0%, 100%": { color: "rgba(255,255,255,0.3)" },
+          "50%": { color: "#E8C36A", textShadow: "0 0 20px rgba(212,168,67,0.4)" },
+        },
       },
       animation: {
         "fade-in-up": "fade-in-up 0.7s ease-out forwards",
@@ -69,6 +74,7 @@ const config: Config = {
         shimmer: "shimmer 2.5s linear infinite",
         float: "float 4s ease-in-out infinite",
         "scale-in": "scale-in 0.5s ease-out forwards",
+        "city-glow": "city-glow 3s ease-in-out infinite",
       },
     },
   },

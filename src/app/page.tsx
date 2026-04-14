@@ -2,10 +2,12 @@
 
 import { LanguageProvider } from "@/context/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { Navbar } from "@/components/Navbar";
 import { ScrollAnimator } from "@/components/ScrollAnimator";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Categories } from "@/components/Categories";
+import { KosherWorldwide } from "@/components/KosherWorldwide";
 import { SocialProof } from "@/components/SocialProof";
 import { EmailForm } from "@/components/EmailForm";
 import { Footer } from "@/components/Footer";
@@ -15,7 +17,7 @@ function SecondCTA() {
   const { t } = useLang();
 
   return (
-    <section className="py-20 md:py-28 px-4 relative">
+    <section id="join" className="py-20 md:py-28 px-4 relative">
       <div className="section-divider max-w-2xl mx-auto mb-20" />
 
       <div className="max-w-xl mx-auto text-center animate-on-scroll">
@@ -41,10 +43,12 @@ export default function Home() {
     <LanguageProvider>
       <div className="min-h-screen bg-dark-950">
         <ScrollAnimator />
+        <Navbar />
         <LanguageToggle />
         <Hero />
         <HowItWorks />
         <Categories />
+        <KosherWorldwide />
         <SocialProof />
         <SecondCTA />
         <Footer />

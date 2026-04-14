@@ -2,18 +2,27 @@
 
 import { useLang } from "@/context/LanguageContext";
 
-const quotes = [
+const painPoints = [
   {
-    he: "אני מבזבז 30 דקות כל יום על להחליט מה לאכול. זה בדיוק מה שאני צריך.",
-    en: "I waste 30 minutes every day deciding what to eat. This is exactly what I need.",
+    emoji: "\uD83E\uDD14",
+    he: "כל יום אותה שאלה: מה לאכול?",
+    en: "Every day the same question: what to eat?",
+    descHe: "Nosh מחליט בשבילך. המלצה אחת, מדויקת, כל יום.",
+    descEn: "Nosh decides for you. One precise recommendation, every day.",
   },
   {
-    he: "סוף סוף מישהו מבין שאני לא רוצה 50 אפשרויות, אני רוצה תשובה אחת.",
-    en: "Finally someone understands I don't want 50 options, I want one answer.",
+    emoji: "\uD83D\uDE35\u200D\uD83D\uDCAB",
+    he: "50 אפשרויות בוולט ואתה עדיין לא יודע",
+    en: "50 options on Wolt and you still can't decide",
+    descHe: "Nosh לא נותן 50 אפשרויות. הוא נותן אחת.",
+    descEn: "Nosh doesn't give 50 options. It gives you one.",
   },
   {
-    he: "וזה כשר? קחו את הכסף שלי.",
-    en: "And it's kosher? Take my money.",
+    emoji: "\u2708\uFE0F",
+    he: "אוכל כשר בחו״ל? בהצלחה למצוא",
+    en: "Kosher food abroad? Good luck finding it",
+    descHe: "Nosh מאתר מסעדות כשרות בכל מקום בעולם.",
+    descEn: "Nosh finds kosher restaurants anywhere in the world.",
   },
 ];
 
@@ -21,37 +30,33 @@ export function SocialProof() {
   const { t } = useLang();
 
   return (
-    <section className="py-20 md:py-32 px-4 relative">
+    <section id="pain-points" className="py-20 md:py-32 px-4 relative">
       <div className="section-divider max-w-2xl mx-auto mb-20" />
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            {t("אנשים כבר מחכים", "People Are Already Waiting")}
+            {t("הכאב ש-Nosh פותר", "The Pain Nosh Solves")}
           </h2>
-          <p className="text-gold text-lg font-medium">
-            {t("מעל 0 אנשים כבר מחכים ל-Nosh", "Over 0 people already waiting for Nosh")}
+          <p className="text-gray-500 text-lg">
+            {t("בעיות אמיתיות. פתרון אחד.", "Real problems. One solution.")}
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {quotes.map((quote, i) => (
+          {painPoints.map((point, i) => (
             <div
               key={i}
               className="animate-on-scroll glass-card rounded-2xl p-8 hover:border-gold/25 transition-all duration-300"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              {/* Quote mark */}
-              <div className="text-gold/30 text-5xl font-serif mb-3 leading-none">
-                &ldquo;
-              </div>
-              <p className="text-gray-300 text-base leading-relaxed mb-6">
-                {t(quote.he, quote.en)}
+              <div className="text-4xl mb-5">{point.emoji}</div>
+              <h3 className="text-lg font-bold text-white mb-3">
+                {t(point.he, point.en)}
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                {t(point.descHe, point.descEn)}
               </p>
-              {/* Stars */}
-              <div className="text-gold text-sm tracking-wider">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
             </div>
           ))}
         </div>

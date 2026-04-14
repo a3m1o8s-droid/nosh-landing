@@ -12,7 +12,7 @@ export function SwipeCard() {
       <div className="absolute -inset-4 bg-gold/5 rounded-3xl blur-2xl" />
 
       {/* Main card */}
-      <div className="relative rounded-2xl overflow-hidden gold-glow border border-gold/15 bg-dark-800 animate-swipe-hint">
+      <div className="relative rounded-2xl overflow-hidden gold-glow border border-gold/15 bg-dark-surface animate-swipe-hint">
         {/* Food image */}
         <div className="relative h-48 sm:h-56">
           <Image
@@ -21,7 +21,7 @@ export function SwipeCard() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-dark-800 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark-surface via-transparent to-transparent" />
 
           {/* Badge */}
           <div className="absolute top-3 start-3 px-3 py-1 rounded-full bg-gold/90 text-dark-950 text-xs font-bold">
@@ -32,7 +32,7 @@ export function SwipeCard() {
         {/* Card content */}
         <div className="p-5">
           <h3 className="text-xl font-bold text-white mb-1">
-            {t("שווארמה מאבו חסן", "Shawarma from Abu Hassan")}
+            {t("שווארמה ממסעדת שמש", "Shawarma from Shemesh")}
           </h3>
           <p className="text-gray-400 text-sm mb-4">
             {t("הערב, 42 ₪, 25 דק׳ משלוח", "Tonight, $12, 25 min delivery")}
