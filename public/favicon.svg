@@ -1,4 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#141418"/>
-  <text x="16" y="23" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="22" fill="#D4A853">N</text>
+  <defs>
+    <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8C36A"/>
+      <stop offset="50%" stop-color="#D4A853"/>
+      <stop offset="100%" stop-color="#B8912E"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#141418"/>
+  <g fill="url(#fg)">
+    <!-- Left stroke -->
+    <rect x="7" y="6" width="3.5" height="20" rx="1.2"/>
+    <!-- Diagonal -->
+    <polygon points="10.5,7.2 21,23 21,26 24.5,26 24.5,23 14,7.2 14,6 10.5,6"/>
+    <!-- Fork handle -->
+    <rect x="21" y="16" width="3.5" height="10" rx="1.2"/>
+    <!-- Fork tines -->
+    <rect x="19.8" y="6" width="1.8" height="8" rx="0.9"/>
+    <rect x="22.2" y="6" width="1.8" height="8" rx="0.9"/>
+    <rect x="24.6" y="6" width="1.8" height="8" rx="0.9"/>
+    <!-- Fork bridge -->
+    <rect x="19.8" y="12.5" width="6.6" height="1.8" rx="0.9"/>
+  </g>
 </svg>
