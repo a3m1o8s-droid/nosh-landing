@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     "משלוח כשר",
     "תכנון ארוחות",
     "nosh",
+    "kosher food",
+    "AI food recommendations",
   ],
   authors: [{ name: "Nosh" }],
   openGraph: {
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#FF6B35",
+  themeColor: "#0A0A0A",
 };
 
 export default function RootLayout({
@@ -50,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl">
+    <html lang="he" dir="rtl" suppressHydrationWarning>
       <body className={`${heebo.variable} font-heebo antialiased`}>
         {children}
       </body>

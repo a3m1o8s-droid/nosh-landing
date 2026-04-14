@@ -1,54 +1,95 @@
+"use client";
+
+import { useLang } from "@/context/LanguageContext";
+import Image from "next/image";
+
+const categories = [
+  {
+    he: "הזמן בלחיצה",
+    en: "Order in a Click",
+    descHe: "משלוח ממסעדה כשרה קרובה",
+    descEn: "Delivery from a nearby kosher restaurant",
+    image:
+      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=640&q=80",
+    emoji: "\uD83D\uDEF5",
+  },
+  {
+    he: "חמם ותאכל",
+    en: "Heat & Eat",
+    descHe: "מוצר מוכן מהסופר",
+    descEn: "Ready-made from the supermarket",
+    image:
+      "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=640&q=80",
+    emoji: "\uD83D\uDD25",
+  },
+  {
+    he: "10 דקות, 4 מרכיבים",
+    en: "10 Min, 4 Ingredients",
+    descHe: "מתכון מינימליסטי שכל אחד יכול",
+    descEn: "A minimalist recipe anyone can make",
+    image:
+      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=640&q=80",
+    emoji: "\u23F1\uFE0F",
+  },
+  {
+    he: "לך תאכל בחוץ",
+    en: "Go Eat Out",
+    descHe: "מסעדה כשרה באזור שלך",
+    descEn: "A kosher restaurant near you",
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=640&q=80",
+    emoji: "\uD83C\uDF7D\uFE0F",
+  },
+];
+
 export function Categories() {
-  const categories = [
-    {
-      emoji: "🛵",
-      title: "הזמן בלחיצה",
-      desc: "משלוח ממסעדה כשרה קרובה. Nosh בוחר, אתה רק מאשר.",
-      color: "border-brand-orange bg-brand-orange/5",
-    },
-    {
-      emoji: "🔥",
-      title: "חמם ותאכל",
-      desc: "מוצר מוכן מהסופר שכבר מחכה לך. 3 דקות במיקרו וסגור.",
-      color: "border-brand-yellow bg-yellow-50",
-    },
-    {
-      emoji: "🍳",
-      title: "10 דקות, 4 מרכיבים",
-      desc: "מתכון מינימליסטי שגם מי שלא מבשל יצליח. בטוח.",
-      color: "border-brand-green bg-green-50",
-    },
-    {
-      emoji: "🍽️",
-      title: "לך תאכל בחוץ",
-      desc: "מסעדה כשרה באזור שלך. כי לפעמים צריך לצאת מהבית.",
-      color: "border-blue-400 bg-blue-50",
-    },
-  ];
+  const { t } = useLang();
 
   return (
-    <section className="py-16 md:py-24 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-black text-center text-brand-dark mb-4">
-          4 סוגי המלצות 🍽️
-        </h2>
-        <p className="text-center text-gray-500 mb-14 max-w-md mx-auto">
-          Nosh לא רק אומר מה לאכול — הוא אומר איך לקבל את זה
-        </p>
+    <section className="py-20 md:py-32 px-4 relative">
+      <div className="section-divider max-w-2xl mx-auto mb-20" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {categories.map((cat) => (
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16 animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
+            {t("4 סוגי המלצות", "4 Types of Recommendations")}
+          </h2>
+          <p className="text-gray-500 text-lg">
+            {t(
+              "Nosh תמיד ימצא לך את האופציה הנכונה",
+              "Nosh always finds the right option for you"
+            )}
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {categories.map((cat, i) => (
             <div
-              key={cat.title}
-              className={`animate-on-scroll rounded-2xl border-2 p-6 ${cat.color} hover:shadow-lg hover:scale-[1.02] transition-all duration-200`}
+              key={i}
+              className="animate-on-scroll group rounded-2xl overflow-hidden border border-white/5 hover:border-gold/20 transition-all duration-500 bg-dark-800"
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="text-4xl mb-3">{cat.emoji}</div>
-              <h3 className="text-xl font-bold text-brand-dark mb-2">
-                {cat.title}
-              </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {cat.desc}
-              </p>
+              {/* Image */}
+              <div className="relative h-44 overflow-hidden">
+                <Image
+                  src={cat.image}
+                  alt={t(cat.he, cat.en)}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-800 to-transparent" />
+                <div className="absolute bottom-3 start-3 text-2xl">
+                  {cat.emoji}
+                </div>
+              </div>
+
+              {/* Text */}
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-white mb-1">
+                  {t(cat.he, cat.en)}
+                </h3>
+                <p className="text-gray-400 text-sm">{t(cat.descHe, cat.descEn)}</p>
+              </div>
             </div>
           ))}
         </div>

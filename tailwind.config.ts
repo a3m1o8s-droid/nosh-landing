@@ -9,15 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          orange: "#FF6B35",
-          "orange-dark": "#E55A28",
-          green: "#2D5016",
-          "green-light": "#3D6B20",
-          cream: "#FFF8F0",
-          "cream-dark": "#FFF0E0",
-          yellow: "#FFB800",
-          dark: "#1A1A1A",
+        dark: {
+          950: "#0A0A0A",
+          900: "#111111",
+          800: "#1A1A1A",
+          700: "#242424",
+          600: "#2E2E2E",
+        },
+        gold: {
+          DEFAULT: "#D4A843",
+          light: "#E8C36A",
+          dark: "#B8912E",
+          50: "#FDF8ED",
+          100: "#F9ECCC",
+          200: "#F0D48E",
+          300: "#E8C36A",
+          400: "#D4A843",
+          500: "#B8912E",
+          600: "#96741F",
+          700: "#745A18",
+          800: "#524012",
+          900: "#30260B",
         },
       },
       fontFamily: {
@@ -25,32 +37,38 @@ const config: Config = {
       },
       keyframes: {
         "fade-in-up": {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "0%": { opacity: "0", transform: "translateY(32px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        "swipe-right": {
-          "0%": { transform: "translateX(0) rotate(0deg)", opacity: "1" },
-          "100%": { transform: "translateX(120%) rotate(12deg)", opacity: "0" },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
-        "swipe-left": {
-          "0%": { transform: "translateX(0) rotate(0deg)", opacity: "1" },
-          "100%": { transform: "translateX(-120%) rotate(-12deg)", opacity: "0" },
+        "swipe-hint": {
+          "0%, 100%": { transform: "translateX(0) rotate(0deg)" },
+          "25%": { transform: "translateX(20px) rotate(2deg)" },
+          "75%": { transform: "translateX(-20px) rotate(-2deg)" },
         },
-        "card-enter": {
-          "0%": { opacity: "0", transform: "scale(0.92)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
         },
       },
       animation: {
-        "fade-in-up": "fade-in-up 0.6s ease-out forwards",
-        "swipe-right": "swipe-right 0.5s ease-in forwards",
-        "swipe-left": "swipe-left 0.5s ease-in forwards",
-        "card-enter": "card-enter 0.4s ease-out forwards",
-        float: "float 3s ease-in-out infinite",
+        "fade-in-up": "fade-in-up 0.7s ease-out forwards",
+        "fade-in": "fade-in 0.5s ease-out forwards",
+        "swipe-hint": "swipe-hint 3s ease-in-out infinite",
+        shimmer: "shimmer 2.5s linear infinite",
+        float: "float 4s ease-in-out infinite",
+        "scale-in": "scale-in 0.5s ease-out forwards",
       },
     },
   },

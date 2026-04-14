@@ -1,100 +1,57 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-
-const CARDS = [
-  {
-    emoji: "🥙",
-    title: "שווארמה מאבו חסן",
-    meta: "₪42 · 25 דק׳ משלוח",
-    tag: "הזמן בלחיצה",
-    tagColor: "bg-brand-orange",
-  },
-  {
-    emoji: "🍝",
-    title: "פסטה ברוטב עגבניות",
-    meta: "10 דק׳ · 4 מרכיבים",
-    tag: "מתכון מהיר",
-    tagColor: "bg-brand-green",
-  },
-  {
-    emoji: "🥘",
-    title: "ג׳חנון מוכן - שופרסל",
-    meta: "₪28 · חמם ותאכל",
-    tag: "מוצר מהסופר",
-    tagColor: "bg-brand-yellow",
-  },
-  {
-    emoji: "🍖",
-    title: "שיפודי הכרמל",
-    meta: "כשר למהדרין · 500 מטר ממך",
-    tag: "לך תאכל בחוץ",
-    tagColor: "bg-blue-500",
-  },
-];
+import { useLang } from "@/context/LanguageContext";
+import Image from "next/image";
 
 export function SwipeCard() {
-  const [index, setIndex] = useState(0);
-  const [animClass, setAnimClass] = useState("animate-card-enter");
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const swipe = useCallback(
-    (direction: "left" | "right") => {
-      if (isAnimating) return;
-      setIsAnimating(true);
-      setAnimClass(
-        direction === "right" ? "animate-swipe-right" : "animate-swipe-left"
-      );
-      setTimeout(() => {
-        setIndex((i) => (i + 1) % CARDS.length);
-        setAnimClass("animate-card-enter");
-        setIsAnimating(false);
-      }, 500);
-    },
-    [isAnimating]
-  );
-
-  // Auto-swipe every 3.5s
-  useEffect(() => {
-    const timer = setInterval(() => {
-      swipe("right");
-    }, 3500);
-    return () => clearInterval(timer);
-  }, [swipe]);
-
-  const card = CARDS[index];
+  const { t } = useLang();
 
   return (
-    <div className="relative w-72 sm:w-80 mx-auto">
-      {/* Background cards for depth */}
-      <div className="absolute inset-0 rounded-2xl bg-white/40 border border-white/60 transform rotate-2 translate-x-2 -translate-y-1" />
-      <div className="absolute inset-0 rounded-2xl bg-white/60 border border-white/80 transform -rotate-1 translate-x-1" />
+    <div className="relative w-72 sm:w-80">
+      {/* Glow effect behind card */}
+      <div className="absolute -inset-4 bg-gold/5 rounded-3xl blur-2xl" />
 
       {/* Main card */}
-      <div
-        className={`relative rounded-2xl bg-white border border-gray-100 shadow-xl p-6 ${animClass} swipe-card`}
-        onClick={() => swipe("right")}
-      >
-        {/* Tag */}
-        <span
-          className={`inline-block text-xs font-bold text-white px-3 py-1 rounded-full ${card.tagColor} mb-4`}
-        >
-          {card.tag}
-        </span>
+      <div className="relative rounded-2xl overflow-hidden gold-glow border border-gold/15 bg-dark-800 animate-swipe-hint">
+        {/* Food image */}
+        <div className="relative h-48 sm:h-56">
+          <Image
+            src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=640&q=80"
+            alt={t("שווארמה", "Shawarma")}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark-800 via-transparent to-transparent" />
 
-        {/* Emoji */}
-        <div className="text-6xl mb-4">{card.emoji}</div>
+          {/* Badge */}
+          <div className="absolute top-3 start-3 px-3 py-1 rounded-full bg-gold/90 text-dark-950 text-xs font-bold">
+            {t("המלצת היום", "Today's Pick")}
+          </div>
+        </div>
 
-        {/* Content */}
-        <h3 className="text-xl font-bold text-brand-dark mb-1">
-          {card.title}
-        </h3>
-        <p className="text-sm text-gray-500">{card.meta}</p>
+        {/* Card content */}
+        <div className="p-5">
+          <h3 className="text-xl font-bold text-white mb-1">
+            {t("שווארמה מאבו חסן", "Shawarma from Abu Hassan")}
+          </h3>
+          <p className="text-gray-400 text-sm mb-4">
+            {t("הערב, 42 ₪, 25 דק׳ משלוח", "Tonight, $12, 25 min delivery")}
+          </p>
 
-        {/* Swipe hint */}
-        <div className="flex items-center justify-between mt-6 text-xs text-gray-300">
-          <span>❌ הבא</span>
-          <span>אוכלים ✅</span>
+          {/* Swipe indicators */}
+          <div className="flex justify-between items-center pt-3 border-t border-white/5">
+            <div className="flex items-center gap-2 text-red-400/60 text-sm">
+              <span>&#10005;</span>
+              <span>{t("הבא", "Skip")}</span>
+            </div>
+            <div className="text-xs text-gray-600">
+              {t("החלק לבחור", "Swipe to choose")}
+            </div>
+            <div className="flex items-center gap-2 text-emerald-400/60 text-sm">
+              <span>{t("אוכלים!", "Let's eat!")}</span>
+              <span>&#10003;</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,57 +1,29 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useLang } from "@/context/LanguageContext";
 
 export function EmailForm() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      await fetch("https://formspree.io/f/mzdkalqe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      setSubmitted(true);
-    } catch {
-      // Graceful fallback
-      setSubmitted(true);
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="text-center py-4">
-        <p className="text-lg font-bold text-brand-green">
-          🎉 נרשמת! נעדכן אותך כשזה מוכן.
-        </p>
-      </div>
-    );
-  }
+  const { t } = useLang();
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md mx-auto">
+    <form
+      action="https://formspree.io/f/{FORM_ID}"
+      method="POST"
+      className="flex flex-col sm:flex-row gap-3"
+    >
       <input
         type="email"
         name="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="המייל שלך"
         required
-        className="flex-1 px-4 py-3 rounded-xl border-2 border-brand-orange/20 bg-white text-brand-dark placeholder:text-gray-400 focus:outline-none focus:border-brand-orange transition-colors text-center sm:text-start"
+        placeholder={t("המייל שלך", "Your email")}
+        className="premium-input flex-1 px-5 py-3.5 rounded-xl text-white placeholder-gray-500 text-base"
+        dir="ltr"
       />
       <button
         type="submit"
-        disabled={submitting}
-        className="px-6 py-3 rounded-xl bg-brand-orange text-white font-bold hover:bg-brand-orange-dark transition-colors disabled:opacity-60 whitespace-nowrap shadow-lg shadow-brand-orange/20"
+        className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-gold-dark via-gold to-gold-light text-dark-950 font-bold text-base hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 whitespace-nowrap"
       >
-        {submitting ? "שולח..." : "תעדכנו אותי כשזה מוכן"}
+        {t("תעדכנו אותי", "Notify Me")}
       </button>
     </form>
   );

@@ -1,31 +1,49 @@
-export function Footer() {
-  return (
-    <footer className="bg-brand-dark text-gray-400 py-10 px-4">
-      <div className="max-w-4xl mx-auto text-center space-y-4">
-        <p className="text-lg font-bold text-white">
-          <span className="text-brand-orange">Nosh</span> — בקרוב.
-        </p>
-        <p className="text-sm">כשר. אישי. בלי לחשוב.</p>
+"use client";
 
-        <div className="flex items-center justify-center gap-6 text-sm">
+import { useLang } from "@/context/LanguageContext";
+
+export function Footer() {
+  const { t } = useLang();
+
+  return (
+    <footer className="py-12 px-4 border-t border-white/5">
+      <div className="max-w-6xl mx-auto text-center">
+        {/* Logo */}
+        <div className="mb-4">
+          <span className="text-2xl font-black text-gold-gradient">Nosh</span>
+        </div>
+
+        <p className="text-gray-500 text-sm mb-6">
+          {t(
+            "Nosh — בקרוב. כשר. אישי. בלי לחשוב.",
+            "Nosh — Coming soon. Kosher. Personal. Effortless."
+          )}
+        </p>
+
+        {/* Links */}
+        <div className="flex items-center justify-center gap-6 mb-8">
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
+            className="text-gray-500 hover:text-gold transition-colors text-sm"
           >
-            📸 אינסטגרם
+            {t("אינסטגרם", "Instagram")}
           </a>
+          <span className="text-gray-700">|</span>
           <a
             href="mailto:hello@nosh.co.il"
-            className="hover:text-white transition-colors"
+            className="text-gray-500 hover:text-gold transition-colors text-sm"
           >
-            ✉️ צור קשר
+            {t("צרו קשר", "Contact Us")}
           </a>
         </div>
 
-        <p className="text-xs text-gray-500">
-          &copy; 2026 Nosh. כל הזכויות שמורות.
+        <div className="section-divider max-w-xs mx-auto mb-6" />
+
+        <p className="text-gray-600 text-xs">
+          &copy; 2026 Nosh.{" "}
+          {t("כל הזכויות שמורות.", "All rights reserved.")}
         </p>
       </div>
     </footer>

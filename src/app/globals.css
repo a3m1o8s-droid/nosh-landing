@@ -3,24 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --brand-orange: #FF6B35;
-  --brand-green: #2D5016;
-  --brand-cream: #FFF8F0;
-  --brand-dark: #1A1A1A;
+  --gold: #D4A843;
+  --gold-light: #E8C36A;
+  --dark-bg: #0A0A0A;
+  --dark-card: #141414;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--brand-dark);
-  background: var(--brand-cream);
+  color: #E5E5E5;
+  background: var(--dark-bg);
   font-family: "Heebo", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Scroll animation utility */
+/* Scroll animation */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
 .animate-on-scroll.is-visible {
@@ -28,13 +32,63 @@ body {
   transform: translateY(0);
 }
 
-/* Swipe card styles */
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E8C36A 0%, #D4A843 50%, #B8912E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold border glow */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(212, 168, 67, 0.15),
+              0 0 60px rgba(212, 168, 67, 0.05);
+}
+
+/* Shimmer effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 168, 67, 0.06) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* Swipe card */
 .swipe-card {
   touch-action: pan-y;
   user-select: none;
   cursor: grab;
 }
-
 .swipe-card:active {
   cursor: grabbing;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 168, 67, 0.12);
+}
+
+/* Premium input */
+.premium-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 168, 67, 0.2);
+  transition: all 0.3s ease;
+}
+.premium-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.1);
+  outline: none;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.2), transparent);
 }
