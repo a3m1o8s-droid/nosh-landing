@@ -1,7 +1,6 @@
 "use client";
 
 import { LanguageProvider } from "@/context/LanguageContext";
-import { LanguageToggle } from "@/components/LanguageToggle";
 import { Navbar } from "@/components/Navbar";
 import { ScrollAnimator } from "@/components/ScrollAnimator";
 import { Hero } from "@/components/Hero";
@@ -18,9 +17,12 @@ function SecondCTA() {
 
   return (
     <section id="join" className="py-16 md:py-24 px-4 sm:px-5 relative">
+      {/* Radial gold glow behind heading */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(212,168,67,0.06)_0%,transparent_70%)] pointer-events-none" />
+
       <div className="section-divider max-w-2xl mx-auto mb-14" />
 
-      <div className="max-w-xl mx-auto text-center animate-on-scroll">
+      <div className="relative z-10 max-w-xl mx-auto text-center animate-on-scroll">
         <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
           {t("רוצה לקבל את ההמלצה הראשונה?", "Want to Get Your First Recommendation?")}
         </h2>
@@ -44,7 +46,6 @@ export default function Home() {
       <div className="min-h-screen bg-dark-950">
         <ScrollAnimator />
         <Navbar />
-        <LanguageToggle />
         <Hero />
         <HowItWorks />
         <Categories />

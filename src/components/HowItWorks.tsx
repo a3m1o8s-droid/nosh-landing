@@ -49,7 +49,7 @@ export function HowItWorks() {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="animate-on-scroll glass-card rounded-2xl p-7 text-center hover:border-gold/25 transition-all duration-300 group"
+              className="animate-on-scroll rounded-2xl p-7 text-center border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/20 hover:border-gold/30 hover:bg-white/[0.05] transition-all duration-300 group"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {/* Step number */}

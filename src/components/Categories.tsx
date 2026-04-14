@@ -44,7 +44,7 @@ export function Categories() {
   const { t } = useLang();
 
   return (
-    <section id="categories" className="py-16 md:py-24 px-4 sm:px-5 relative">
+    <section id="categories" className="py-16 md:py-24 px-4 sm:px-5 relative bg-[#111116]">
       <div className="section-divider max-w-2xl mx-auto mb-14" />
 
       <div className="max-w-6xl mx-auto">
@@ -64,7 +64,7 @@ export function Categories() {
           {categories.map((cat, i) => (
             <div
               key={i}
-              className="animate-on-scroll group relative rounded-2xl overflow-hidden border border-white/5 hover:border-gold/20 transition-all duration-500 bg-dark-surface"
+              className="animate-on-scroll group relative rounded-2xl overflow-hidden border border-white/10 hover:border-gold/30 hover:scale-[1.03] transition-all duration-300 bg-dark-surface shadow-lg shadow-black/20"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               {/* Tooltip */}
@@ -75,16 +75,16 @@ export function Categories() {
               </div>
 
               {/* Image */}
-              <div className="relative h-40 overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
                 <Image
                   src={cat.image}
                   alt={t(cat.he, cat.en)}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-surface to-transparent" />
-                <div className="absolute bottom-3 start-3">
-                  <cat.Icon size={28} color="#D4A853" strokeWidth={1.5} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-3 start-3 bg-gold/20 p-2 rounded-full">
+                  <cat.Icon size={22} color="#D4A853" strokeWidth={1.5} />
                 </div>
               </div>
 

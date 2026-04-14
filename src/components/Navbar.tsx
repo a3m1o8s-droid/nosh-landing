@@ -13,7 +13,7 @@ const links = [
 ];
 
 export function Navbar() {
-  const { t } = useLang();
+  const { t, lang, toggleLang } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -23,23 +23,29 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Update html dir/lang when language changes
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "he" ? "rtl" : "ltr";
+  }, [lang]);
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 flex items-center ${
         scrolled || menuOpen
-          ? "bg-dark-950/95 backdrop-blur-md border-b border-white/5 py-3"
-          : "bg-transparent py-4"
+          ? "bg-black/80 backdrop-blur-md border-b border-white/5"
+          : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 flex items-center justify-between">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-5 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center">
           <Image
             src="/logo.svg"
             alt="Nosh"
-            width={110}
-            height={36}
-            className="h-8 md:h-9 w-auto"
+            width={120}
+            height={40}
+            className="h-9 md:h-10 w-auto"
             priority
           />
         </a>
@@ -50,26 +56,42 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-gray-400 hover:text-gold transition-colors"
+              className="text-base text-gray-400 hover:text-gold transition-colors"
             >
               {t(link.he, link.en)}
             </a>
           ))}
+
+          {/* Language toggle in navbar */}
+          <button
+            onClick={toggleLang}
+            className="border border-gold/50 px-3 py-1.5 rounded-full text-sm text-gold-light hover:bg-gold/10 transition-all duration-300"
+          >
+            {lang === "he" ? "EN" : "עב"}
+          </button>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden text-gray-400 hover:text-gold transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-        >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile: lang + hamburger */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            onClick={toggleLang}
+            className="border border-gold/50 px-2.5 py-1 rounded-full text-xs text-gold-light hover:bg-gold/10 transition-all"
+          >
+            {lang === "he" ? "EN" : "עב"}
+          </button>
+          <button
+            className="text-gray-400 hover:text-gold transition-colors"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-dark-950/95 backdrop-blur-md border-t border-white/5 px-4 pb-4 pt-2">
+        <div className="absolute top-16 left-0 right-0 md:hidden bg-black/90 backdrop-blur-md border-t border-white/5 px-4 pb-4 pt-2">
           {links.map((link) => (
             <a
               key={link.href}

@@ -68,11 +68,11 @@ body {
   cursor: grabbing;
 }
 
-/* Glass card */
+/* Glass card (legacy, kept for compatibility) */
 .glass-card {
-  background: rgba(30, 30, 36, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 168, 67, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Premium input */
@@ -103,4 +103,24 @@ body {
   height: 800px;
   background: radial-gradient(circle, rgba(212, 168, 67, 0.04) 0%, transparent 70%);
   pointer-events: none;
+}
+
+/* City glow animation — each city lights up in sequence */
+@keyframes city-glow-pulse {
+  0%, 100% {
+    color: rgba(255, 255, 255, 0.3);
+    text-shadow: none;
+    transform: scale(1);
+  }
+  10%, 20% {
+    color: #E8C36A;
+    text-shadow: 0 0 24px rgba(212, 168, 67, 0.5);
+    transform: scale(1.08);
+  }
+}
+
+.city-glow-item {
+  color: rgba(255, 255, 255, 0.3);
+  animation: city-glow-pulse 15s ease-in-out infinite;
+  transition: transform 0.3s ease;
 }
