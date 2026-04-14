@@ -7,7 +7,7 @@ export function NoshLogo({ height = 36 }: { height?: number }) {
   const fontSize = height * 0.75;
 
   return (
-    <span className="inline-flex items-baseline gap-0 leading-none">
+    <span dir="ltr" className="inline-flex items-baseline gap-0 leading-none">
       {/* N with fork — inline SVG */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
